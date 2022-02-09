@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
-    flash[:success] = "Logout com sucesso!"
+    flash[:success] = "Sessão encerrada com sucesso!"
     redirect_to entrar_path
   end
 

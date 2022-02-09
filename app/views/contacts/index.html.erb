@@ -1,6 +1,6 @@
 <div class="row">
-  <div class="col-xs-12 text-center">
-    <h1>Meus Contatos</h1>
+  <div class="col-xs-12 text-left">
+    <h1>Meus Contatinhos</h1>
   </div>
 
   <div class="col-md-8 col-md-offset-2 col-xs-12">
@@ -9,9 +9,8 @@
       <tr>
         <th>Nome</th>
         <th>Telefone</th>
-        <th colspan="2">
-          Ações
-          <%= link_to 'Novo Contato', new_contact_path(current_user), class: 'btn btn-success' %>
+        <th class="text-right">
+          <%= link_to 'Novo Contatinho', new_contact_path(current_user), class: 'btn btn-success' %>
         </th>
       </tr>
       </thead>
@@ -19,26 +18,25 @@
       <% if @contacts.empty? %>
         <tr>
           <td colspan="4" class="text-center">
-            <h3>Sem contatos cadastrados.</h3>
-            <%= link_to 'click aqui', new_contact_path(current_user) %> para cadastrar um novo contato
+            <h3>Sem contatinhos cadastrados</h3>
+            <%= link_to 'Clique Aqui', new_contact_path(current_user) %> para cadastrar um novo contatinho
           </td>
         </tr>
-      <% end %>
-      <% @contacts.each do |c| %>
-        <tr>
-          <td>
-            <%= c.name %>
-          </td>
-          <td>
-            <%= c.phone %>
-          </td>
-          <td>
-            <%= link_to 'Editar', edit_contact_path(c), class: 'btn btn-warning' %>
-          </td>
-          <td>
-            <%= link_to 'Excluir', contact_path(c), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja excluir?' } %>
-          </td>
-        </tr>
+      <% else %>
+        <% @contacts.each do |c| %>
+          <tr>
+            <td>
+              <%= c.name %>
+            </td>
+            <td>
+              <%= c.phone %>
+            </td>
+            <td>
+              <%= link_to 'Editar', edit_contact_path(c), class: 'btn btn-warning' %>
+              <%= link_to 'Excluir', contact_path(c), method: :delete, class: 'btn btn-danger', data: { confirm: 'Tem certeza que deseja excluir?' } %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
       </tbody>
     </table>
